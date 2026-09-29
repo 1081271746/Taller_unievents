@@ -475,17 +475,24 @@ export default function Home() {
           font-size: 13px;
           margin-bottom: 20px;
         }
+.event-link {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #27272a;
+  background: transparent;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
 
-        .event-link {
-          width: 100%;
-          padding: 11px;
-          border: 1px solid #27272a;
-          background: transparent;
-          color: white;
-          border-radius: 10px;
-          cursor: pointer;
-          font-weight: 600;
-        }
+.event-link:hover {
+  background: #181824;
+  border-color: #7c3aed;
+}
 
         .event-link:hover {
           background: #181824;
@@ -749,7 +756,9 @@ export default function Home() {
                 <span>📍 {event.location}</span>
               </div>
 
-              <button className="event-link">Ver detalles →</button>
+          <a href={`/ssr?event=${event.id}`} className="event-link">
+  Ver detalles →
+</a>
             </article>
           ))}
         </div>

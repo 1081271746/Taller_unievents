@@ -1,15 +1,78 @@
-const event = {
-  title: "Conferencia de Inteligencia Artificial",
-  category: "Tecnología",
-  date: "30 de septiembre de 2026",
-  time: "6:00 PM",
-  location: "Auditorio Principal",
-  description:
-    "Una conferencia sobre las nuevas aplicaciones de la inteligencia artificial en el desarrollo de software, educación y transformación digital.",
-  speaker: "Laura Martínez",
-};
+const events = {
+  "1": {
+    title: "Conferencia de Inteligencia Artificial",
+    category: "Tecnología",
+    date: "30 de septiembre de 2026",
+    time: "6:00 PM",
+    location: "Auditorio Principal",
+    description:
+      "Una conferencia sobre las nuevas aplicaciones de la inteligencia artificial en el desarrollo de software, educación y transformación digital.",
+    speaker: "Laura Martínez",
+  },
 
-export default function SSRPage() {
+  "2": {
+    title: "Hackathon Universitario",
+    category: "Innovación",
+    date: "2 de octubre de 2026",
+    time: "8:00 AM",
+    location: "Laboratorio 3",
+    description:
+      "Una jornada de innovación donde los estudiantes desarrollan soluciones tecnológicas para resolver problemas reales.",
+    speaker: "Equipo de Innovación",
+  },
+
+  "3": {
+    title: "Feria de Emprendimiento",
+    category: "Emprendimiento",
+    date: "5 de octubre de 2026",
+    time: "10:00 AM",
+    location: "Plaza Central",
+    description:
+      "Espacio para presentar ideas de negocio, proyectos innovadores y emprendimientos desarrollados por estudiantes.",
+    speaker: "Centro de Emprendimiento",
+  },
+
+  "4": {
+    title: "Taller de Desarrollo Web",
+    category: "Tecnología",
+    date: "8 de octubre de 2026",
+    time: "2:00 PM",
+    location: "Sala 204",
+    description:
+      "Taller práctico sobre desarrollo de aplicaciones web modernas utilizando tecnologías actuales.",
+    speaker: "Departamento de Ingeniería",
+  },
+
+  "5": {
+    title: "Festival Cultural",
+    category: "Cultura",
+    date: "12 de octubre de 2026",
+    time: "4:00 PM",
+    location: "Auditorio Central",
+    description:
+      "Una jornada dedicada a la música, el teatro, el arte y las diferentes expresiones culturales de la comunidad universitaria.",
+    speaker: "Bienestar Universitario",
+  },
+
+  "6": {
+    title: "Torneo Universitario",
+    category: "Deportes",
+    date: "15 de octubre de 2026",
+    time: "3:00 PM",
+    location: "Complejo Deportivo",
+    description:
+      "Competencia deportiva universitaria con participación de diferentes equipos y disciplinas.",
+    speaker: "Área de Deportes",
+  },
+};
+export default async function SSRPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ event?: string }>;
+}) {
+  const params = await searchParams;
+
+  const event = events[params.event as keyof typeof events] || events["1"];
   return (
     <main className="page">
       <style>{`
